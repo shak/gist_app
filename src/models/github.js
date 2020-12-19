@@ -6,7 +6,7 @@
  * @param {String} username 
  * @returns Promise will resolve response JSON
  */
-export async function loadGistsByUser(username) {
+export const loadGistsByUser = async (username) => {
   const response = await fetch(`https://api.github.com/users/${username}/gists`);
 
   return await response.json();
