@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useReducer} from 'react';
+import { isArray } from 'lodash';
+
 import { loadGistsByUser } from '../models/github.js';
 import GistRow from './GistRow.js';
 
@@ -62,10 +64,13 @@ const GistList = () => {
   useEffect(async () => {
     try {
       if (typeof search === 'string' && search.length > 0) {
+        // trigger loading state
         dispatch({ type: FETCH_INIT });
+
+        // attempt fetch from the API
         const response = await loadGistsByUser(search);
 
-        if (Array.isArray(response)) {
+        if (isArray(response)) {
           dispatch({ type: FETCH_SUCCESS, payload: response });
         }
       }

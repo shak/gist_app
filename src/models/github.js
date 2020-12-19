@@ -1,3 +1,5 @@
+import { get } from 'lodash';
+
 const GENERIC_ERROR_MESSAGE = 'There was an error processing the request.';
 
 /**
@@ -19,9 +21,5 @@ export const loadGistsByUser = async (username) => {
   // this can be further expanded to capture exact error from the error object
   // and display to user OR capture to server syslog service and generate a
   // service alert email etc.
-  if (typeof response === 'object' && ('statusText' in response)) {
-    throw new Error(response.statusText);
-  }
-
-  throw new Error(GENERIC_ERROR_MESSAGE);
+  throw new Error(get(response, 'statusText', GENERIC_ERROR_MESSAGE));
 }
