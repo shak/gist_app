@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useReducer} from 'react';
 import { loadGistsByUser } from '../models/github.js';
+import GistRow from './GistRow.js';
 
 const FETCH_SUCCESS = 0;
 const FETCH_ERROR = 1;
+const FETCH_INIT = 2;
 
 /**
  * State/action reduces for the gist pull. See React's hooks API for more info
@@ -14,6 +16,14 @@ const FETCH_ERROR = 1;
  */
 const gistListReducer = (state, action) => {
   switch (action.type) {
+    case FETCH_INIT:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        data: [],
+        message: null
+      };
     case FETCH_SUCCESS:
       return {
         ...state,
@@ -40,7 +50,7 @@ const gistListReducer = (state, action) => {
  */
 const GistList = () => {
   const [query, setQuery] = useState('');
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('rdeavila');
 
   const [state, dispatch] = useReducer(gistListReducer, {
     isLoading: false,
@@ -52,6 +62,7 @@ const GistList = () => {
   useEffect(async () => {
     try {
       if (typeof search === 'string' && search.length > 0) {
+        dispatch({ type: FETCH_INIT });
         const response = await loadGistsByUser(search);
 
         if (Array.isArray(response)) {
@@ -64,7 +75,7 @@ const GistList = () => {
   }, [search]); // bind to updates on search term
 
   return (
-    <aside className="column">
+    <main className="column">
       <form
         onSubmit={event => { 
           setSearch(query); 
@@ -80,14 +91,13 @@ const GistList = () => {
         <button type="submit">Search</button>
       </form>
       {state.message}
-      <ul>
+      {state.isLoading ? <div>Loading...</div> : ''}
+      <div>
         {state.data.map(gist => (
-          <li key={gist.id}>
-            {gist.description}
-          </li>
+          <GistRow key={gist.id} gist={gist} />
         ))}
-      </ul>
-    </aside>
+      </div>
+    </main>
   );
 }
 
