@@ -12,7 +12,7 @@ module.exports = {
       }
     ]
   },
-  entry: "./src/index.js",
+  entry: ["babel-polyfill", "./src/index.js"],
   output: {
     filename: "app.js",
     path: path.resolve(__dirname, "dist")
