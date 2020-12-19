@@ -1,0 +1,33 @@
+{
+  "name": "gist_app",
+  "version": "1.0.0",
+  "description": "Gist Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shak/gist_app.git"
+  },
+  "author": "Shahrukh Omar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shak/gist_app/issues"
+  },
+  "homepage": "https://github.com/shak/gist_app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "babel-loader": "^8.2.2",
+    "webpack": "4.41.6",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "redux": "^4.0.5"
+  }
+}
