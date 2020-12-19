@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   module: {
@@ -9,9 +10,22 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader, // for more complex applications, I would use SASS and sass loaders
+          "css-loader"
+        ]
       }
     ]
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css"
+    })
+  ],
   entry: ["babel-polyfill", "./src/index.js"],
   output: {
     filename: "app.js",
