@@ -9,13 +9,14 @@ const GENERIC_ERROR_MESSAGE = 'There was an error processing the request.';
  *
  * @method loadGistsByUser
  * @param {String} username
- * @param {int} [limit=30]
+ * @param {int} [page=1]
+ * @param {int} [limit=20]
  * @returns Promise will resolve response JSON
  */
-export const loadGistsByUser = async (username, limit = 30) => {
+export const loadGistsByUser = async (username, page = 1,limit = 20) => {
   // fetching max gists per page, I can easily implement pagination but keeping this to-the-point
   // for this exercise. Happy to discuss this face to face futher.
-  const response = await fetch(`${GITHUB_API}/users/${username}/gists?per_page=${limit}`);
+  const response = await fetch(`${GITHUB_API}/users/${username}/gists?page=${page}&per_page=${limit}`);
   if (response.ok) {
     return await response.json();
   }
@@ -31,10 +32,10 @@ export const loadGistsByUser = async (username, limit = 30) => {
  *
  * @method loadForksFromResourceURL
  * @param {String} resourceURL
- * @param {int} [limit=100]
+ * @param {int} [limit=10]
  * @returns Promise will resolve response JSON
  */
-export const loadForksFromResourceURL = async (resourceURL, limit = 100) => {
+export const loadForksFromResourceURL = async (resourceURL, limit = 10) => {
   if (isEmpty(resourceURL) === false) {
     const response = await fetch(`${resourceURL}?per_page=${limit}`);
     if (response.ok) {
