@@ -16,7 +16,7 @@ const GistRow = (props) => {
     <div className="gist_row">
       <header>
         <Avatar url={props.gist.owner.avatar_url} login={props.gist.owner.login} />
-        <h4>{description}</h4>
+        <p>{description}</p>
       </header>
       <Forks resourceURL={props.gist.forks_url} />
       <Langs id={props.gist.id} files={props.gist.files} />

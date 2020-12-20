@@ -46,7 +46,7 @@ const GistList = () => {
   }, [search]); // bind to updates on search term
 
   return (
-    <main className="column">
+    <section className="column">
       <form
         onSubmit={event => {
           setSearch(query);
@@ -54,21 +54,22 @@ const GistList = () => {
         }}
       >
         <input
+          className="search"
           type="text"
           value={query}
           placeholder="Github username"
           onChange={event => setQuery(event.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className="search_submit" type="submit">Show Gists</button>
       </form>
-      {state.message}
-      {state.isLoading ? <div>Loading...</div> : ''}
-      <div>
+      {state.isError ? <p className="error">{state.message}</p> : ''}
+      {state.isLoading ? <p className="loading">Loading</p> : ''}
+      <main role="main">
         {state.data.map(gist => (
           <GistRow key={gist.id} gist={gist} />
         ))}
-      </div>
-    </main>
+      </main>
+    </section>
   );
 }
 
