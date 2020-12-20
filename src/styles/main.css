@@ -107,3 +107,11 @@ button.search_submit {
   66% { width: 1rem; }
   100% { width: 3rem; }
 }
+
+.paginator {
+  margin-top: 10px;
+}
+
+.paginator > button {
+  margin-right: 5px;
+}
