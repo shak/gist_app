@@ -1,6 +1,7 @@
 import React from 'react';
 import { has, get, isEmpty } from 'lodash';
 import Forks from './GistRow/Forks.js';
+import Langs from './GistRow/Langs.js';
 import Avatar from './GistRow/Avatar.js';
 
 const GistRow = (props) => {
@@ -18,6 +19,7 @@ const GistRow = (props) => {
         <h4>{description}</h4>
       </header>
       <Forks resourceURL={props.gist.forks_url} />
+      <Langs id={props.gist.id} files={props.gist.files} />
     </div>
   );
 }
