@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import { isArray, pick } from 'lodash';
+import { isArray, pick, isEmpty } from 'lodash';
 import { loadForksFromResourceURL }  from '../../models/github.js';
 import Avatar from './Avatar.js';
 
@@ -9,7 +9,7 @@ const FETCH_INIT = 2;
 
 const FORK_OWNERS_LIMIT = 3;
 
-const extractForkOwners = (forks) => 
+const extractForkOwners = (forks) =>
   (isArray(forks)) && forks.map((fork) => pick(fork, ['id', 'owner.avatar_url', 'owner.login']));
 
 const gistForkReducer = (state, action) => {
@@ -56,7 +56,7 @@ const Forks = (props) => {
       dispatch({ type: FETCH_INIT });
       // attempt fetch from the API
       const response = await loadForksFromResourceURL(props.resourceURL, FORK_OWNERS_LIMIT);
-      
+
       if (isArray(response)) {
         dispatch({ type: FETCH_SUCCESS, payload: response });
       }
@@ -66,8 +66,9 @@ const Forks = (props) => {
   }, [props.resourceURL]); // bind on first load
 
   return (
-    <section className="gist_forks">
-      Forks: {state.data.map(fork => <Avatar key={fork.id} url={fork.owner.avatar_url} login={fork.owner.login} />)}
+    <section className="forks">
+      <span>{isEmpty(state.data) ? 'This gist has not been forked' : `Last ${FORK_OWNERS_LIMIT} forks:`}</span>
+      {state.data.map(fork => <Avatar key={fork.id} url={fork.owner.avatar_url} login={fork.owner.login} />)}
     </section>
   );
 }
