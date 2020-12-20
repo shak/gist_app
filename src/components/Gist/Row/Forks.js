@@ -17,10 +17,10 @@ import Avatar from './Avatar.js';
 
 const FORK_OWNERS_LIMIT = 3;
 
-const extractForkOwners = (forks) =>
+const extractForkOwners = forks =>
   (isArray(forks)) && forks.map((fork) => pick(fork, ['id', 'owner.avatar_url', 'owner.login']));
 
-const Forks = (props) => {
+const Forks = props => {
   const [state, dispatch] = useReducer(GithubAPIStatefulReducer, {
     isLoading: false,
     isError: false,

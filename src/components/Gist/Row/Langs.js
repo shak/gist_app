@@ -11,7 +11,7 @@ import { get, map, uniq, without } from 'lodash';
  * @param {Array} files
  * @return {Array}
  */
-const extractUniqueLangsFromFiles = (files) =>
+const extractUniqueLangsFromFiles = files =>
   uniq(
     without(
       map(files, (file) => get(file, 'language', 'Unknown')),
@@ -21,7 +21,7 @@ const extractUniqueLangsFromFiles = (files) =>
 
 // Note: perfectly OK to use lang as key in the following as we are rendering unique
 // entities and the keys only need to be unique within the realm of this component
-const Langs = (props) =>
+const Langs = props =>
   <section className="langs">
     <span>Filetypes:</span> {extractUniqueLangsFromFiles(props.files).map((lang) => <div key={lang} className="lang">{lang}</div>)}
   </section>

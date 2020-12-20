@@ -16,9 +16,6 @@ import GithubAPIStatefulReducer, {
 import { loadGistsByUser } from '../../models/github.js';
 import GistRow from './Row.js';
 
-/**
- * GistList react functional component
- */
 const GistList = () => {
   const [query, setQuery] = useState('');
   const [search, setSearch] = useState('');

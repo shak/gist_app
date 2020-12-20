@@ -6,5 +6,6 @@ const App = () =>
     <header><h1>Gist Application</h1></header>
     <GistList/>
   </div>
+;
 
 export default App;

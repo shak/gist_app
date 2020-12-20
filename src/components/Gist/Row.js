@@ -1,11 +1,13 @@
 import React from 'react';
-import { has, get, isEmpty } from 'lodash';
+import {
+  has,
+  get,
+  isEmpty } from 'lodash';
 import Forks from './Row/Forks.js';
 import Langs from './Row/Langs.js';
 import Avatar from './Row/Avatar.js';
 
 const GistRow = (props) => {
-  let avatar = null;
   let description = `gist:${props.gist.id}`;
 
   if (has(props, 'gist.description') && isEmpty(props.gist.description) === false) {

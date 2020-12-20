@@ -1,7 +1,7 @@
 import React from 'react';
 import { get } from 'lodash';
 
-const Avatar = (props) =>
+const Avatar = props =>
   <img
     className="avatar"
     src={get(props, 'url')}
