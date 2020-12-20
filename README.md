@@ -17,3 +17,4 @@ The app can be improved in the follwing ways which I have skipped to shortage of
 - Using new hooks API to demonstrate component organisation and business logic re-use, this can be improved with pagination etc. I've demonstrated an example using API reducer.
 - Could also potentially enrich the API response by parsing it through a Gist factory which will return Gist objects that can encapsulate the business logic for pulling last 3 forks or unique file types etc.
 - I have not implemented tests (as they weren't required) but personally, I would expect tests to be part of the app development. This can be further discussed and implemented.
+- Test explicitly asked for CSS. Would have preferred to use SASS.
