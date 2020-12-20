@@ -46,7 +46,7 @@ const GistList = () => {
   }, [search]); // bind to updates on search term
 
   return (
-    <section className="column">
+    <section>
       <form
         onSubmit={event => {
           setSearch(query);

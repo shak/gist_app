@@ -2,31 +2,11 @@ html {
   font-family: Arial, sans-serif;
 }
 
-.wrapper > header {
-  width: 100%;
-  text-align: center;
-  padding: 20px 0;
-}
-
-main.column {
-  width: calc(100% - 40px); /* avoid horizontal scroll due to padding */
+.wrapper {
   padding: 20px;
 }
 
-.avatar {
-  border-radius: 50%; /* circular mask */
-  margin: 0 5px 0 0;
-}
-
-.lang {
-  background-color: #b6eacb;
-  border: 1px #6eca93 solid;
-  border-radius: 3px;
-  color: #294434;
-  padding: 2px 5px;
-  margin: 3px;
-}
-
+/* Gist specific */
 .gist_row {
   padding: 10px;
   border: 1px #c8d6e6 solid;
@@ -45,7 +25,7 @@ main.column {
   margin: 0;
 }
 
-.gist_row h4 {
+.gist_row p {
   margin: 0 10px;
   flex-direction: row;
   align-self: center;
@@ -63,8 +43,67 @@ main.column {
   margin-top: 10px;
   font-size: 0.8rem;
 }
+
 .gist_row .forks > span,
 .gist_row .langs > span {
   align-self: center;
   margin-right: 5px;
+}
+
+.avatar {
+  border-radius: 50%; /* circular mask */
+  margin: 0 5px 0 0;
+}
+
+.lang {
+  background-color: #b6eacb;
+  border: 1px #6eca93 solid;
+  border-radius: 3px;
+  color: #294434;
+  padding: 2px 5px;
+  margin: 3px;
+}
+
+/* Form */
+input.search,
+button.search_submit {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+input.search {
+  border-color: #86b2e4;
+  width: 40%;
+}
+
+button.search_submit {
+  border-color: #a5a5a5;
+}
+
+/* Misc */
+.error {
+  background-color: #ff7777;
+  padding: 5px;
+  color: white;
+  border-radius: 3px;
+  border: 1px red solid;
+}
+
+.loading::after {
+  animation: ellipsis 1s steps(4) infinite;
+  content: "...";
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+/* truncate ::after width to simulate progress */
+@keyframes ellipsis {
+  0% { width: 0; }
+  33% { width: 0.8rem; }
+  66% { width: 1rem; }
+  100% { width: 3rem; }
 }
