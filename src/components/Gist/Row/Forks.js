@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import { isArray, pick, isEmpty } from 'lodash';
-import { loadForksFromResourceURL }  from '../../models/github.js';
+import { loadForksFromResourceURL }  from '../../../models/github.js';
 import Avatar from './Avatar.js';
 
 const FETCH_SUCCESS = 0;

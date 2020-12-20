@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useReducer } from 'react';
 import { isArray } from 'lodash';
 
-import { loadGistsByUser } from '../models/github.js';
-import GistRow from './GistRow.js';
+import { loadGistsByUser } from '../../models/github.js';
+import GistRow from './Row.js';
 
 const FETCH_SUCCESS = 0;
 const FETCH_ERROR = 1;
@@ -10,11 +10,11 @@ const FETCH_INIT = 2;
 
 /**
  * State/action reduces for the gist pull. See React's hooks API for more info
- * 
+ *
  * @method gistListReducer
- * @param {Object} state 
+ * @param {Object} state
  * @param {Object} action
- * @return {Object} 
+ * @return {Object}
  */
 const gistListReducer = (state, action) => {
   switch (action.type) {
@@ -82,8 +82,8 @@ const GistList = () => {
   return (
     <main className="column">
       <form
-        onSubmit={event => { 
-          setSearch(query); 
+        onSubmit={event => {
+          setSearch(query);
           event.preventDefault(); // prevent GET request from triggering on submit
         }}
       >

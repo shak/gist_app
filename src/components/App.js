@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GistList from './GistList.js';
+import GistList from './Gist/List.js';
 
 const App = () =>
   <div className="wrapper">

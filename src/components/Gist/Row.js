@@ -1,8 +1,8 @@
 import React from 'react';
 import { has, get, isEmpty } from 'lodash';
-import Forks from './GistRow/Forks.js';
-import Langs from './GistRow/Langs.js';
-import Avatar from './GistRow/Avatar.js';
+import Forks from './Row/Forks.js';
+import Langs from './Row/Langs.js';
+import Avatar from './Row/Avatar.js';
 
 const GistRow = (props) => {
   let avatar = null;
