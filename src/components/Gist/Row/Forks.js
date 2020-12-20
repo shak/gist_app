@@ -1,50 +1,27 @@
-import React, { useEffect, useReducer } from 'react';
-import { isArray, pick, isEmpty } from 'lodash';
+import React, {
+  useEffect,
+  useReducer } from 'react';
+
+import {
+  isArray,
+  pick,
+  isEmpty } from 'lodash';
+
+import GithubAPIStatefulReducer, {
+  FETCH_SUCCESS,
+  FETCH_ERROR,
+  FETCH_INIT } from '../../../reducers/hooks/GithubAPIStatefulReducer';
+
 import { loadForksFromResourceURL }  from '../../../models/github.js';
 import Avatar from './Avatar.js';
-
-const FETCH_SUCCESS = 0;
-const FETCH_ERROR = 1;
-const FETCH_INIT = 2;
 
 const FORK_OWNERS_LIMIT = 3;
 
 const extractForkOwners = (forks) =>
   (isArray(forks)) && forks.map((fork) => pick(fork, ['id', 'owner.avatar_url', 'owner.login']));
 
-const gistForkReducer = (state, action) => {
-  switch (action.type) {
-    case FETCH_INIT:
-      return {
-        ...state,
-        isLoading: true,
-        isError: false,
-        data: [],
-        message: null
-      };
-    case FETCH_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        data: extractForkOwners(action.payload),
-        message: null
-      };
-    case FETCH_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-        data: [],
-        message: action.payload
-      };
-    default:
-      throw new Error();
-  }
-};
-
 const Forks = (props) => {
-  const [state, dispatch] = useReducer(gistForkReducer, {
+  const [state, dispatch] = useReducer(GithubAPIStatefulReducer, {
     isLoading: false,
     isError: false,
     data: [],
@@ -58,7 +35,7 @@ const Forks = (props) => {
       const response = await loadForksFromResourceURL(props.resourceURL, FORK_OWNERS_LIMIT);
 
       if (isArray(response)) {
-        dispatch({ type: FETCH_SUCCESS, payload: response });
+        dispatch({ type: FETCH_SUCCESS, payload: extractForkOwners(response) });
       }
     } catch (error) {
       dispatch({ type: FETCH_ERROR, payload: error.message });

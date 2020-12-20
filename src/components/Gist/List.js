@@ -1,51 +1,17 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useReducer } from 'react';
+
 import { isArray } from 'lodash';
+
+import GithubAPIStatefulReducer, {
+  FETCH_SUCCESS,
+  FETCH_ERROR,
+  FETCH_INIT } from '../../reducers/hooks/GithubAPIStatefulReducer';
 
 import { loadGistsByUser } from '../../models/github.js';
 import GistRow from './Row.js';
-
-const FETCH_SUCCESS = 0;
-const FETCH_ERROR = 1;
-const FETCH_INIT = 2;
-
-/**
- * State/action reduces for the gist pull. See React's hooks API for more info
- *
- * @method gistListReducer
- * @param {Object} state
- * @param {Object} action
- * @return {Object}
- */
-const gistListReducer = (state, action) => {
-  switch (action.type) {
-    case FETCH_INIT:
-      return {
-        ...state,
-        isLoading: true,
-        isError: false,
-        data: [],
-        message: null
-      };
-    case FETCH_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        data: action.payload,
-        message: null
-      };
-    case FETCH_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-        data: [],
-        message: action.payload
-      };
-    default:
-      throw new Error();
-  }
-};
 
 /**
  * GistList react functional component
@@ -54,7 +20,7 @@ const GistList = () => {
   const [query, setQuery] = useState('');
   const [search, setSearch] = useState('rdeavila');
 
-  const [state, dispatch] = useReducer(gistListReducer, {
+  const [state, dispatch] = useReducer(GithubAPIStatefulReducer, {
     isLoading: false,
     isError: false,
     data: [],

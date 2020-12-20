@@ -1,5 +1,4 @@
 import React from 'react';
-
 import GistList from './Gist/List.js';
 
 const App = () =>
