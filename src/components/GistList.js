@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer} from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { isArray } from 'lodash';
 
 import { loadGistsByUser } from '../models/github.js';
