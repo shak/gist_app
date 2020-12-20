@@ -44,8 +44,8 @@ const Forks = (props) => {
 
   return (
     <section className="forks">
-      <span>{isEmpty(state.data) ? 'This gist has not been forked' : `Last ${FORK_OWNERS_LIMIT} forks:`}</span>
-      {state.data.map(fork => <Avatar key={fork.id} url={fork.owner.avatar_url} login={fork.owner.login} />)}
+      <span>{isEmpty(state.data) ? 'This gist has not been forked' : `Last forked by (max ${FORK_OWNERS_LIMIT}):`}</span>
+      {state.data.map(fork => <Avatar key={fork.id} url={fork.owner.avatar_url} login={fork.owner.login} width="20" height="20" />)}
     </section>
   );
 }
