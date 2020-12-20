@@ -6,7 +6,9 @@ html {
   padding: 20px;
 }
 
+
 /* Gist specific */
+
 .gist_row {
   padding: 10px;
   border: 1px #c8d6e6 solid;
@@ -15,11 +17,11 @@ html {
   border-radius: 5px;
 }
 
-.gist_row > header {
+.gist_row>header {
   display: flex;
 }
 
-.gist_row > header .avatar {
+.gist_row>header .avatar {
   flex-direction: row;
   align-self: center;
   margin: 0;
@@ -44,14 +46,15 @@ html {
   font-size: 0.8rem;
 }
 
-.gist_row .forks > span,
-.gist_row .langs > span {
+.gist_row .forks>span,
+.gist_row .langs>span {
   align-self: center;
   margin-right: 5px;
 }
 
 .avatar {
-  border-radius: 50%; /* circular mask */
+  border-radius: 50%;
+  /* circular mask */
   margin: 0 5px 0 0;
 }
 
@@ -64,7 +67,9 @@ html {
   margin: 3px;
 }
 
+
 /* Form */
+
 input.search,
 button.search_submit {
   border-width: 1px;
@@ -83,7 +88,9 @@ button.search_submit {
   border-color: #a5a5a5;
 }
 
+
 /* Misc */
+
 .error {
   background-color: #ff7777;
   padding: 5px;
@@ -100,18 +107,28 @@ button.search_submit {
   vertical-align: top;
 }
 
+
 /* truncate ::after width to simulate progress */
+
 @keyframes ellipsis {
-  0% { width: 0; }
-  33% { width: 0.8rem; }
-  66% { width: 1rem; }
-  100% { width: 3rem; }
+  0% {
+    width: 0;
+  }
+  33% {
+    width: 0.8rem;
+  }
+  66% {
+    width: 1rem;
+  }
+  100% {
+    width: 3rem;
+  }
 }
 
 .paginator {
   margin-top: 10px;
 }
 
-.paginator > button {
+.paginator>button {
   margin-right: 5px;
 }
