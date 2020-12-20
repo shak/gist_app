@@ -3,7 +3,10 @@ export const FETCH_ERROR = 1;
 export const FETCH_INIT = 2;
 
 /**
- * State/action reduces for the gist pull. See React's hooks API for more info
+ * State/action reducer for the gist pull. See React's hooks API for more info
+ *
+ * Note: Assumes array collection for the payload. This can be further expanded
+ * to support various payload types.
  *
  * @method githubAPIStatefulReducer
  * @param {Object} state
