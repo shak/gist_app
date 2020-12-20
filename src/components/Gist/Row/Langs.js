@@ -1,5 +1,9 @@
 import React, { Fragment } from 'react';
-import { get, map, uniq, without } from 'lodash';
+import {
+  get,
+  map,
+  uniq,
+  without } from 'lodash';
 
 /**
  * Returns array of unique languages from the list of files provided.

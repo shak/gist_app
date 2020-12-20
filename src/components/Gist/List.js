@@ -6,7 +6,7 @@ import React, {
 import {
   isArray,
   add,
- subtract } from 'lodash';
+  subtract } from 'lodash';
 
 import GithubAPIStatefulReducer, {
   FETCH_SUCCESS,

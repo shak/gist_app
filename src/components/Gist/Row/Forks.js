@@ -17,6 +17,13 @@ import Avatar from './Avatar.js';
 
 const FORK_OWNERS_LIMIT = 3;
 
+/**
+ * Returns forks owner info requred by this component. Discards the rest.
+ *
+ * @method extractForkOwners
+ * @param {Array} forks
+ * @return {Array}
+ */
 const extractForkOwners = forks =>
   (isArray(forks)) && forks.map((fork) => pick(fork, ['id', 'owner.avatar_url', 'owner.login']));
 
@@ -31,7 +38,6 @@ const Forks = props => {
   useEffect(async () => {
     try {
       dispatch({ type: FETCH_INIT });
-      // attempt fetch from the API
       const response = await loadForksFromResourceURL(props.resourceURL, FORK_OWNERS_LIMIT);
 
       if (isArray(response)) {
@@ -40,7 +46,7 @@ const Forks = props => {
     } catch (error) {
       dispatch({ type: FETCH_ERROR, payload: error.message });
     }
-  }, [props.resourceURL]); // bind on first load
+  }, [props.resourceURL]);
 
   return (
     <section className="forks">
